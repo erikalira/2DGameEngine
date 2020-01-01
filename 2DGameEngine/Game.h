@@ -14,7 +14,6 @@ public:
 	void update();
 	void render();
 	void clean();
-
 	bool running();
 private:
 	int count=0;
