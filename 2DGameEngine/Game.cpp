@@ -1,8 +1,8 @@
 #include "Game.h"
 #include "TextureManager.h"
+#include "GameObject.h"
 
-SDL_Texture* playerTex;
-SDL_Rect srcR, destR;
+GameObject* player;
 
 Game::Game() {
 
@@ -27,7 +27,7 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 		isRunning = true;
 	}
 
-	playerTex = TextureManager::LoadTexture("assets/detective/Idle/Idle_02.png", renderer);
+	player = new GameObject("assets/detective/Idle/Idle_02.png", renderer);
 }
 
 void Game::handleEvents() {
@@ -45,17 +45,12 @@ void Game::handleEvents() {
 }
 
 void Game::update() {
-	count++;
-	destR.h = 64;
-	destR.w = 64;
-	destR.x = count;
-	destR.y = 300;
-	std::cout << count << std::endl;
+	player->Update();
 }
 
 void Game::render() {
 	SDL_RenderClear(renderer);
-	SDL_RenderCopy(renderer, playerTex, NULL, &destR);
+	player->Render();
 	SDL_RenderPresent(renderer);
 }
 
@@ -63,7 +58,6 @@ void Game::clean() {
 	SDL_DestroyWindow(window);
 	SDL_DestroyRenderer(renderer);
 	SDL_Quit();
-	std::cout << "game quit!..." << std::endl;
 }
 
 
