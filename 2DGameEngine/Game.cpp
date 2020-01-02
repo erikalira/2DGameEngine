@@ -5,6 +5,8 @@
 GameObject* player;
 GameObject* enemy;
 
+SDL_Renderer* Game::renderer = nullptr;
+
 Game::Game() {
 
 }
@@ -28,8 +30,8 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 		isRunning = true;
 	}
 
-	player = new GameObject("assets/detective/Idle/Idle_02.png", renderer, 0 , 0);
-	enemy = new GameObject("assets/minotaur/Idle/Idle_01.png", renderer, 50, 50);
+	player = new GameObject("assets/detective/Idle/Idle_02.png", 0 , 0);
+	enemy = new GameObject("assets/minotaur/Idle/Idle_01.png", 50, 50);
 }
 
 void Game::handleEvents() {
