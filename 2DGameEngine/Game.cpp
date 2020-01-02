@@ -27,7 +27,7 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 		isRunning = true;
 	}
 
-	player = new GameObject("assets/detective/Idle/Idle_02.png", renderer);
+	player = new GameObject("assets/detective/Idle/Idle_02.png", renderer, 0 , 0);
 }
 
 void Game::handleEvents() {
