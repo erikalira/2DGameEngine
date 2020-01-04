@@ -1,9 +1,11 @@
 #include "Game.h"
 #include "TextureManager.h"
 #include "GameObject.h"
+#include "Map.h"
 
 GameObject* player;
 GameObject* enemy;
+Map* map;
 
 SDL_Renderer* Game::renderer = nullptr;
 
@@ -32,6 +34,7 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 
 	player = new GameObject("assets/detective/Idle/Idle_02.png", 0 , 0);
 	enemy = new GameObject("assets/minotaur/Idle/Idle_01.png", 50, 50);
+	map = new Map();
 }
 
 void Game::handleEvents() {
@@ -55,6 +58,7 @@ void Game::update() {
 
 void Game::render() {
 	SDL_RenderClear(renderer);
+	map->DrawMap();
 	player->Render();
 	enemy->Render();
 	SDL_RenderPresent(renderer);
